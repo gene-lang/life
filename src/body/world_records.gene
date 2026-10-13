@@ -1,4 +1,4 @@
-# The networked world profile's durable records — docs/proposals/world.md
+# The networked world profile's durable records — the Commons' docs/world.md
 # §8.2–§8.4, §10.1, §10.8, §12.1. No transport here: this module decides what
 # a Life commits locally; `world_network.gene` moves it over the wire.
 #

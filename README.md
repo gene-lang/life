@@ -4,14 +4,20 @@ A persistent individual whose brain returns a short decision note and an
 ordinary Gene program. The body, storage, scheduler, worker, APIs, and tests
 are written in Gene. This package is independent of Gene Harness and Cordis.
 
-Implementation of [the Life proposal](../../docs/proposals/life.md) is in
+Implementation of [the Life proposal](docs/life.md) is in
 progress. Durable continuity, code evolution, and body routines work; remaining milestones
 are tracked in [docs/status.md](docs/status.md).
 
-Run these commands from the repository root using the built `bin/gene`:
+Life needs the `gene` executable on `PATH`, from a
+[Gene checkout](https://github.com/gene-lang/gene-new) built with `nimble build`. `package.gene` takes the
+`genex/websocket` binding from that checkout as `../gene-new/src/genex/websocket`,
+so clone Gene beside this repository as `gene-new` and put its `bin` directory
+on `PATH`.
+
+Run these commands from this repository's root:
 
 ```sh
-bin/gene run examples/life/src/demo.gene
+gene run src/demo.gene
 ```
 
 The repeatable fake-brain demo remembers a visitor's preference, restarts partway
@@ -27,18 +33,18 @@ and it can be emptied at any time. Both are ignored by git.
 To run the long-lived body and local chat directly:
 
 ```sh
-bin/gene run examples/life/src/main.gene create examples/life/homes/garden
-bin/gene run examples/life/src/main.gene run examples/life/homes/garden
+gene run src/main.gene create homes/garden
+gene run src/main.gene run homes/garden
 ```
 
 In another terminal:
 
 ```sh
-bin/gene run examples/life/src/main.gene send examples/life/homes/garden 'I prefer shade.'
-bin/gene run examples/life/src/main.gene command examples/life/homes/garden '{"op":"inspect","prefix":"conversation/"}'
-bin/gene run examples/life/src/main.gene command examples/life/homes/garden '{"op":"pause"}'
-bin/gene run examples/life/src/main.gene command examples/life/homes/garden '{"op":"resume"}'
-bin/gene run examples/life/src/main.gene command examples/life/homes/garden '{"op":"stop"}'
+gene run src/main.gene send homes/garden 'I prefer shade.'
+gene run src/main.gene command homes/garden '{"op":"inspect","prefix":"conversation/"}'
+gene run src/main.gene command homes/garden '{"op":"pause"}'
+gene run src/main.gene command homes/garden '{"op":"resume"}'
+gene run src/main.gene command homes/garden '{"op":"stop"}'
 ```
 
 `create HOME --seed NAME` chooses what the Life is told once, at its creation:
@@ -131,15 +137,15 @@ sleeping; the host still receives messages and responds to operator controls.
 ## A shared world (networked profile)
 
 A Life can instead inhabit a shared world run by another process — the
-Commons (`examples/world`, [docs/proposals/world.md](../../docs/proposals/world.md)).
+[Commons](https://github.com/gene-lang/world) ([its design](https://github.com/gene-lang/world/blob/main/docs/world.md)).
 The profile is chosen once, at creation; the local world stays the default and
 is unchanged.
 
 ```sh
-bin/gene run examples/life/src/main.gene create examples/life/homes/aster --network
-bin/gene run examples/life/src/main.gene bind examples/life/homes/aster ws://127.0.0.1:8096/world/v1 CREDENTIAL_FILE
-bin/gene run examples/life/src/main.gene run examples/life/homes/aster
-bin/gene run examples/life/src/main.gene command examples/life/homes/aster '{"op":"world"}'
+gene run src/main.gene create homes/aster --network
+gene run src/main.gene bind homes/aster ws://127.0.0.1:8096/world/v1 CREDENTIAL_FILE
+gene run src/main.gene run homes/aster
+gene run src/main.gene command homes/aster '{"op":"world"}'
 ```
 
 The world's operator issues the credential for this Life's id
@@ -191,11 +197,10 @@ local default), `life.db` is an incremental WAL file written page by page
 
 ## Tests
 
-Run the Gene tests from the repository root. The Life package declares its
-`genex/websocket` dependency, so name the package root:
+Run the Gene tests from this repository's root:
 
 ```sh
-bin/gene test --package-root examples/life examples/life/tests/
+gene test tests/
 ```
 
 The tests execute real Gene subprocesses, including fixtures killed with
@@ -208,5 +213,5 @@ follow its history, and run directly it prints the measurement for any length
 ([docs/persistence.md](docs/persistence.md) has the method and the numbers):
 
 ```sh
-bin/gene run examples/life/tests/cycle_growth_spec.gene 200 file
+gene run tests/cycle_growth_spec.gene 200 file
 ```

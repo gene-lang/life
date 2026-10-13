@@ -1,6 +1,6 @@
 # Transport-independent delivery state, shared by every outbound adapter: the
 # HTTP mailbox connector and the networked world profile
-# (docs/proposals/world.md §8.6, §10.1, §10.8).
+# (the Commons' docs/world.md §8.6, §10.1, §10.8).
 #
 # An outbound record is immutable in what it asks for — its stable ID and exact
 # bytes/semantic payload — and moves through these states:

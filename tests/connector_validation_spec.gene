@@ -273,7 +273,7 @@
         (let observation (support/seed host fixture))
         (let staged (support/stage host observation "incompatible-pending"))
         (let tx (p/begin host/store "incompatible-adapter-fixture"))
-        (let source ($fs/read_text "examples/life/src/body/mailbox.gene"))
+        (let source ($fs/read_text "src/body/mailbox.gene"))
         (let files {^mailbox.gene $"${source}\n# Test-only incompatible revision\n"})
         (let revision (code/module_bundle tx "unsupported-mailbox" files "mailbox.gene"))
         (let registration (p/tx_get tx "connector/mailbox"))

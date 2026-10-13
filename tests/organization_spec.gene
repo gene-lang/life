@@ -8,11 +8,11 @@
 
 (fn fixture [^provider provider = nil]
   (let name (p/id "organization"))
-  (runtime/open_life $"examples/life/tmp/${name}" ^^create ^clock (fn [] 1000)
+  (runtime/open_life $"tmp/${name}" ^^create ^clock (fn [] 1000)
     ^decisions [(brain/response "Quiet first start" "nil")] ^brain provider))
 (fn candidate [host, name = "visitors@2"]
   (let tx (p/begin host/store "candidate"))
-  (let source ($fs/read_text "examples/life/src/organizations/visitor_memory.gene"))
+  (let source ($fs/read_text "src/organizations/visitor_memory.gene"))
   (let revision (code/module_bundle tx "visitor memory" {^main.gene source} "main.gene"))
   (p/commit tx)
   {^id name ^module revision ^code [revision] ^roots ["mind/"] ^^context

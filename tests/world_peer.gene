@@ -6,7 +6,7 @@
 # against the same world. Tests steer it directly: complete a walk, emit an
 # event, drop a receipt after "committing", answer `unknown`, replay events,
 # skip a sequence, disconnect. The real world process is exercised separately
-# by examples/world/tools/life_smoke.mjs.
+# by the Commons' tools/life_smoke.mjs.
 (import * : p ^from "../src/host/persistence")
 (import * : records ^from "../src/body/world_records")
 

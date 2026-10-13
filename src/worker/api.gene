@@ -84,7 +84,7 @@
   (message take [id, ^tx tx = nil] (rpc "take" {^id id} tx))
   (message start_walk [destination, ^owner owner = nil, ^tx tx = nil]
     (rpc "start_walk" {^destination destination ^owner owner} tx))
-  # The networked profile (docs/proposals/world.md §8.2). Each call below that
+  # The networked profile (the Commons' docs/world.md §8.2). Each call below that
   # changes the world prepares one outbound request and answers its reference
   # after local publication — not the world's outcome. `result` reads the
   # latest recorded outcome; `on_result` stores a data continuation — saved

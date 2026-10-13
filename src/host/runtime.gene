@@ -16,7 +16,7 @@
 (import * : seeds ^from "../seeds")
 
 # `world_profile` is "local" (the original co-located world) or "network" (a
-# shared Commons world, docs/proposals/world.md §1.1), fixed at creation.
+# shared Commons world, the Commons' docs/world.md §1.1), fixed at creation.
 # `world` holds the network profile's transient connection state;
 # `world_transport` substitutes the WebSocket transport (tests).
 (type Host
@@ -25,7 +25,7 @@
           ^world_profile Str ^world Cell ^world_transport Any ^seed Any})
 
 # What a Life is told once is provenance; what it is inclined to now is its
-# own data (docs/proposals/world.md §3.5). `creation` is written here and never
+# own data (the Commons' docs/world.md §3.5). `creation` is written here and never
 # again. `state/disposition` starts as the seed's text and is the Life's to
 # rewrite; every context is built from it.
 (fn initialize [host]
@@ -114,7 +114,7 @@
 # "file"; LIFE_STORAGE sets the default); an existing Life keeps its own.
 (fn open_life [home, ^create create = false, ^clock clock = wall_ms,
                ^brain provider = nil, ^decisions decisions = nil,
-               ^worker worker = "examples/life/src/worker/worker.gene", ^fault fault = nil,
+               ^worker worker = "src/worker/worker.gene", ^fault fault = nil,
                ^profile profile = "local", ^storage storage = nil, ^world_transport transport = nil,
                ^seed seed = nil]
   (if_not (["local" "network"] .contains? profile) (p/problem "Unknown world profile"))

@@ -11,7 +11,7 @@
   (require_text destination/thread "thread" 256)
   (if (== destination/adapter "local") (return destination/conversation))
   # World speech is local to where it was spoken; its conversation is the
-  # world's (docs/proposals/world.md §7.3).
+  # world's (the Commons' docs/world.md §7.3).
   (if (== destination/adapter "world") (return $"world:${destination/conversation}"))
   (if_not (== destination/adapter "http") (p/problem "Unknown chat adapter"))
   (require_text destination/connector "connector" 128)

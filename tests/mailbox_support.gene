@@ -9,12 +9,12 @@
 # State is retained for inspection/restart; only the stale readiness marker is removed.
 (fn start [home = nil]
   (let root ($fs/real_path "."))
-  (let directory (?? home $"examples/life/tmp/mailbox-${($crypto/random_hex 12)}"))
+  (let directory (?? home $"tmp/mailbox-${($crypto/random_hex 12)}"))
   ($fs/make_dir directory)
   (let ready $"${directory}/ready.data")
   (if ($fs/exists? ready) ($fs/remove ready))
   (let task ($os/exec_async ($os/executable_path)
-    "run" "examples/life/tests/mailbox_fixture.gene" directory ^dir root
+    "run" "tests/mailbox_fixture.gene" directory ^dir root
     ^timeout_ms 120000 ^max_bytes 16384))
   (var started false)
   (try

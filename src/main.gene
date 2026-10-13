@@ -123,9 +123,9 @@
 (fn main [arguments]
   (let args arguments/.body)
   (if_yes (< args/.size 2)
-    ($println "Usage: gene run examples/life/src/main.gene create|run|send|command|inspect HOME [TEXT|JSON|PREFIX]")
-    ($println "       gene run examples/life/src/main.gene create HOME [--network] [--seed garden|aster|brin|cove|dara]")
-    ($println "       gene run examples/life/src/main.gene bind HOME ENDPOINT CREDENTIAL_FILE")
+    ($println "Usage: gene run src/main.gene create|run|send|command|inspect HOME [TEXT|JSON|PREFIX]")
+    ($println "       gene run src/main.gene create HOME [--network] [--seed garden|aster|brin|cove|dara]")
+    ($println "       gene run src/main.gene bind HOME ENDPOINT CREDENTIAL_FILE")
     (return 2))
   (let action args/0)
   (let home args/1)

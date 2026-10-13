@@ -10,7 +10,7 @@
 (fn at [date, time] (* (calendar/local_seconds date time) 1000))
 (fn fixture [now]
   (let name (p/id "scheduler"))
-  (let host (runtime/open_life $"examples/life/tmp/${name}" ^^create ^clock (fn [] now/.get)
+  (let host (runtime/open_life $"tmp/${name}" ^^create ^clock (fn [] now/.get)
     ^decisions [(brain/response "Quiet" "nil")]))
   (runtime/settle host)
   host)

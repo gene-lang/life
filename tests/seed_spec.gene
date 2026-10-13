@@ -5,10 +5,10 @@
 (import * : brain ^from "../src/brain")
 (import * : seeds ^from "../src/seeds")
 
-# docs/proposals/world.md §3.5: the creation seed is provenance, the current
+# the Commons' docs/world.md §3.5: the creation seed is provenance, the current
 # disposition is the Life's own data, and contexts are built from the latter.
 
-(fn home [] (let name (p/id "seed")) $"examples/life/tmp/${name}")
+(fn home [] (let name (p/id "seed")) $"tmp/${name}")
 (fn decide [host, source, note]
   (host/decisions/.get .push (brain/response note source))
   (let observation (body/receive host "Please consider"))

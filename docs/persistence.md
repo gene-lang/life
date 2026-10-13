@@ -45,7 +45,7 @@ time. Every cycle runs the same small program (one state write, one memory),
 so a change in cycle time comes from what the Life has retained:
 
 ```sh
-bin/gene run examples/life/tests/cycle_growth_spec.gene 200 file
+gene run tests/cycle_growth_spec.gene 200 file
 ```
 
 Median milliseconds per cycle, over windows of 20 cycles, before and after the

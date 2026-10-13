@@ -8,7 +8,7 @@
 #
 # As a measurement (`gene run`), for any length and either backend:
 #
-#   bin/gene run examples/life/tests/cycle_growth_spec.gene [CYCLES] [image|file] [WINDOW]
+#   gene run tests/cycle_growth_spec.gene [CYCLES] [image|file] [WINDOW]
 #
 # prints the median, mean and maximum per WINDOW (default 20) cycles with the
 # store's size, then one JSON summary line. docs/persistence.md has the method
@@ -51,7 +51,7 @@
 # summary.
 (fn measure [cycles, backend, window, report]
   (let name (p/id "growth"))
-  (let home $"examples/life/tmp/${name}")
+  (let home $"tmp/${name}")
   (let host (runtime/open_life home ^^create ^clock (fn [] 1000) ^storage backend
     ^decisions [(brain/response "Quiet first start" "nil")]))
   (let summary {^cycles cycles ^storage backend ^window window ^windows []})

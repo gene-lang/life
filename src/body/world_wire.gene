@@ -1,5 +1,5 @@
 # The networked world profile's transport: one WebSocket through the
-# independent `genex/websocket` client (docs/proposals/world.md §9.7).
+# independent `genex/websocket` client (the Commons' docs/world.md §9.7).
 #
 # A transport is four functions — open, send, receive, close — so the body
 # polls it from its ordinary loop, never from generated programs, and tests can
@@ -15,7 +15,9 @@
 (import [load connect_protocol send receive WebSocketError] ^from "." ^pkg "websocket")
 
 (let subprotocol "gene.world.v1")
-(let default_library "src/genex/websocket/build/libgene_websocket")
+# Built in the Gene checkout that sits beside this repository (package.gene
+# names the binding there too); GENE_WEBSOCKET_LIBRARY overrides it.
+(let default_library "../gene-new/src/genex/websocket/build/libgene_websocket")
 
 (var native_cell ($cell nil))
 
@@ -31,7 +33,7 @@
   (let path (library_path))
   (if_not ($fs/exists? path)
     (fail (new WebSocketError
-      $"The genex/websocket native library is not built (${path}). Build it with libcurl >= 8.11 and WebSocket support: python3 src/genex/websocket/tools/build.py, passing --pkg-config-path with Homebrew curl's lib/pkgconfig on macOS.")))
+      $"The genex/websocket native library is not built (${path}). Build it in the Gene checkout with libcurl >= 8.11 and WebSocket support: python3 src/genex/websocket/tools/build.py, passing --pkg-config-path with Homebrew curl's lib/pkgconfig on macOS.")))
   (let native (try (load path)
     catch Any (fail (new WebSocketError $"The genex/websocket native library at ${path} could not be loaded: ${$err/message}"))))
   (native_cell .set native)

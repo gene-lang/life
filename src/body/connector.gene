@@ -8,7 +8,7 @@
 
 # Retain the actual wire adapter source, and refuse silent revision substitution.
 # Like the host's default worker path, this package is launched from the repo root.
-(let adapter_files {^mailbox.gene ($fs/read_text "examples/life/src/body/mailbox.gene")})
+(let adapter_files {^mailbox.gene ($fs/read_text "src/body/mailbox.gene")})
 (let adapter_bundle {^entry "mailbox.gene" ^files adapter_files})
 (let adapter_revision ($crypto/sha256 ($serde/write_data adapter_bundle)))
 (fn require [condition, message] (if_not condition (p/problem message)))

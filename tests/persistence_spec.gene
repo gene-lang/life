@@ -4,12 +4,12 @@
 
 (fn fresh [label]
   (let name (p/id label))
-  (p/open_store $"examples/life/tmp/${name}" ^^create))
+  (p/open_store $"tmp/${name}" ^^create))
 
 (describe "Life durable storage"
   (it "commits snapshots and retains immutable revisions" []
     (let name (p/id "store"))
-    (let home $"examples/life/tmp/${name}")
+    (let home $"tmp/${name}")
     (let store (p/open_store home ^^create))
     (try
       (let value {^nested [1]})
@@ -35,7 +35,7 @@
 
   (it "rejects an optimistic conflict without publishing either grouped record" []
     (let name (p/id "conflict"))
-    (let store (p/open_store $"examples/life/tmp/${name}" ^^create))
+    (let store (p/open_store $"tmp/${name}" ^^create))
     (try
       (p/put store "a" 1)
       (let tx (p/begin store "old-view"))
@@ -134,7 +134,7 @@
 
   (it "keeps commit receipts in the database, readable by key and by prefix" []
     (let name (p/id "receipts"))
-    (let home $"examples/life/tmp/${name}")
+    (let home $"tmp/${name}")
     (let store (p/open_store home ^^create))
     (var key nil)
     (try

@@ -4,7 +4,7 @@
 (import * : delivery_state ^from "../src/body/delivery")
 
 # One conformance table for the transport-independent delivery kernel
-# (docs/proposals/world.md §8.6, §10.8), applied to both record shapes that use
+# (the Commons' docs/world.md §8.6, §10.8), applied to both record shapes that use
 # it: an HTTP mailbox delivery and a networked world request. The adapters'
 # own specs (connector_*_spec, world_network_spec) exercise each over its real
 # transport.
@@ -19,7 +19,7 @@
 
 (fn with_store [callback]
   (let name (p/id "delivery"))
-  (let host (runtime/open_life $"examples/life/tmp/${name}" ^^create ^clock (fn [] 1000)))
+  (let host (runtime/open_life $"tmp/${name}" ^^create ^clock (fn [] 1000)))
   (try (callback host) ensure (runtime/close_life host)))
 
 (fn stored [host, shape] (p/get host/store $"${shape/prefix}${shape/record/id}"))

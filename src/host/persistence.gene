@@ -32,7 +32,7 @@
 #             republished whole and atomically on every COMMIT. The original
 #             local profile; the failed-publication contract below is its own.
 #   "file"  — life.db through `$db/sqlite/open_file`: SQLite's pager and WAL
-#             write only the changed pages (docs/proposals/world.md §12.8).
+#             write only the changed pages (the Commons' docs/world.md §12.8).
 #             WAL, synchronous=FULL and fullfsync; a commit is durable when
 #             COMMIT returns. Networked Lives use it.
 #

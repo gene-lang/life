@@ -1,4 +1,4 @@
-# The networked world profile — docs/proposals/world.md §1.1, §8, §9–§12.
+# The networked world profile — the Commons' docs/world.md §1.1, §8, §9–§12.
 #
 # A second implementation behind `body/world`, beside the local world. The
 # shared Commons world is an independently running environment: this Life

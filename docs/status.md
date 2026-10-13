@@ -1,11 +1,11 @@
 # Proposal implementation audit
 
-The goal remains the complete `docs/proposals/life.md` experiment, implemented
+The goal remains the complete `docs/life.md` experiment, implemented
 in Gene. This is a progress record, not a reduction of that scope.
 
 ## Current evidence
 
-`bin/gene test --package-root examples/life examples/life/tests/` exercises the
+`gene test tests/` exercises the
 Gene implementation:
 
 - Explicit create/open, first-start observation, fake brain.
@@ -78,7 +78,7 @@ Gene implementation:
   generation changes. Rejection/failure observations aid bounded correction
   without becoming an automatic wake source.
 
-- The networked world profile (docs/proposals/world.md Milestone 2), against an
+- The networked world profile (the Commons' docs/world.md Milestone 2), against an
   in-memory world: credential attach and synchronized view; a walk and its data
   continuation published in one commit and sent only afterwards; both
   registration/result orderings with one readiness transition; 70 outstanding
@@ -102,7 +102,7 @@ Gene implementation:
   suspend request is complete once admitted and updates the walk it names.
 - The transport-independent delivery kernel shared by the HTTP connector and
   the world profile, one conformance table over both record shapes.
-- Real processes (examples/world/tools/life_smoke.mjs): two networked Lives and
+- Real processes (the Commons' tools/life_smoke.mjs): two networked Lives and
   a browser-shaped person in one Commons world, including contention for one
   object, a Life and then the world killed mid-walk, and a request committed
   while the world was down.
@@ -120,7 +120,7 @@ Gene implementation:
 
 The CLI create/run/send/inspect/stop path has also been exercised with two live
 Gene processes. Stop acknowledges only after committing its continuation point.
-`bin/gene run examples/life/src/demo.gene` also runs the full garden continuity,
+`gene run src/demo.gene` also runs the full garden continuity,
 withdrawn-request cancellation, and sleep/restart/wake demonstration headlessly.
 
 ## Required work remaining

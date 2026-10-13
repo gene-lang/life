@@ -9,7 +9,7 @@
 (import * : world_peer ^from "./world_peer")
 
 # The networked world profile against an in-memory world (world_peer.gene):
-# docs/proposals/world.md §8.2–§8.4, §9.4, §10, §11. Each Life has its own
+# the Commons' docs/world.md §8.2–§8.4, §9.4, §10, §11. Each Life has its own
 # store; the peer keeps the world's side across a Life's close and reopen.
 
 (let credential "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef")
@@ -23,7 +23,7 @@
 
 (fn attach [^fault fault = nil ^thinking thinking = false]
   (let name (p/id "world"))
-  (let home $"examples/life/tmp/${name}")
+  (let home $"tmp/${name}")
   (let host (runtime/open_life home ^^create ^profile "network" ^clock (fn [] 1000) ^fault fault))
   (let meta (p/get host/store "meta"))
   # No model calls unless asked: then the network profile and its executor

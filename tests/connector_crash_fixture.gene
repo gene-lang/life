@@ -8,7 +8,7 @@
 
 (fn open_host [fixture, ^home home = nil, ^clock clock = (fn [] 1000), ^fault fault = nil]
   (let name (p/id "connector"))
-  (let directory (?? home $"examples/life/tmp/${name}"))
+  (let directory (?? home $"tmp/${name}"))
   (let host (runtime/open_life directory ^^create ^clock clock ^fault fault))
   (try
     (let meta (p/get host/store "meta"))

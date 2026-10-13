@@ -6,6 +6,8 @@
 
 **Updated:** 2026-10-12 (pointers to the networked world profile in §7 and §13; no design change).
 
+**Location.** This proposal was written as `docs/proposals/life.md` in the [Gene repository](https://github.com/gene-lang/gene-new). Its companion `world.md` is now [`docs/world.md`](https://github.com/gene-lang/world/blob/main/docs/world.md) in the Commons repository.
+
 > Gene Life observes, remembers, chooses, and acts over time. Its brain writes a brief decision note alongside an executable Gene program. The note preserves its expressed state of mind; the program directs its body.
 
 This document records the direction agreed in the Gene Life discussion and proposes a small starting architecture. The APIs below are illustrative application interfaces, not claims about an existing Gene Life implementation or new Gene language features. They should change as the experiment teaches us what is useful.
@@ -737,7 +739,7 @@ Keep this implementation to one local chat, a tiny logical world, one resumable 
 
 Make the first local world and chat adapter small but persistent. Their test fixtures should include a changed location, a remembered preference, a saved state value, an unfinished activity, a conversation with a pending reply, and a future wakeup. A fresh process must recover these without invoking the brain to reconstruct them. Add forced-exit recovery alongside the clean-stop test; persistence is a completion requirement for this slice.
 
-First verify the selected Gene execution path with functions, loops, saved code loading, repeated scope creation/disposal, and cancellation. Exercise a runaway foreground loop and a waiting adapter while event receipt and operator controls remain active; merely configuring a budget does not demonstrate responsiveness. The current [development status](../development.md#status) identifies eval-defined type/method and closure-retention limitations. Establish which constructs this prototype supports before relying on repeated generated execution in a long-lived process.
+First verify the selected Gene execution path with functions, loops, saved code loading, repeated scope creation/disposal, and cancellation. Exercise a runaway foreground loop and a waiting adapter while event receipt and operator controls remain active; merely configuring a budget does not demonstrate responsiveness. The current [development status](https://github.com/gene-lang/gene-new/blob/main/docs/development.md#status) identifies eval-defined type/method and closure-retention limitations. Establish which constructs this prototype supports before relying on repeated generated execution in a long-lived process.
 
 ### Extend continuity and social behavior
 

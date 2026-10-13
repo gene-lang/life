@@ -41,7 +41,7 @@
 
 # The same deterministic fixture in a shared world: on first start it walks to
 # the garden and leaves a data continuation that says so on arrival — no model
-# call and no waiting program (docs/proposals/world.md §8.4). It acknowledges a
+# call and no waiting program (the Commons' docs/world.md §8.4). It acknowledges a
 # person who speaks to it, and never answers another Life, so two fixtures
 # cannot talk forever. It is a fixture, not a conversational model.
 (fn network_fake [context]
